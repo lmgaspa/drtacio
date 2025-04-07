@@ -39,7 +39,6 @@ export default defineComponent({
       items: [
         { label: 'Artigos', link: '/artigos' },
         { label: 'Entrevistas', link: '/entrevistas' },
-        { label: 'Casos Famosos', link: '/casos-famosos' },
         { label: 'Quem Sou', link: '/quem-sou' },
         { label: 'Contato', link: '/contato' }
       ]

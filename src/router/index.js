@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../components/Home.vue'
 import Artigos from '../components/Artigos.vue'
 import Entrevistas from '../components/Entrevistas.vue'
-import CasosFamosos from '../components/CasosFamosos.vue'
 import QuemSou from '../components/QuemSou.vue'
 import Contato from '../components/Contato.vue'
 
@@ -18,10 +17,6 @@ const routes = [
   {
     path: '/entrevistas',
     component: Entrevistas
-  },
-  {
-    path: '/casosfamosos',
-    component: CasosFamosos
   },
   {
     path: '/quemsou',
