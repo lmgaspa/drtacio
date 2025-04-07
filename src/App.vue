@@ -1,16 +1,18 @@
 <template>
-  <MenuOnlyView />
-  <SideBarMenu />
+  <div>
+    <router-view />
+  </div>
 </template>
+
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import MenuOnlyView from './components/MenuOnlyView.vue'
+import Home from '../src/components/Home.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    MenuOnlyView,
+    Home,
   }
 })
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid p-0 vh-100">
-    <div class="row g-0 h-100">
+    <div class="row g-0 h-100 flex-md-row flex-column">
       <!-- Lado esquerdo: Imagem -->
       <div class="col-md-6">
         <img src="/tacio1.png" class="img-fluid h-100 w-100 object-fit-cover" alt="Imagem" />
@@ -14,9 +14,14 @@
             <p class="text-gold fs-5">Advogado Criminalista</p>
           </div>
           <div class="d-grid gap-4 col-8 mx-auto">
-            <button v-for="item in items" :key="item" class="btn btn-lg custom-btn">
-              {{ item }}
-            </button>
+            <router-link
+              v-for="item in items"
+              :key="item.label"
+              :to="item.link"
+              class="btn btn-lg custom-btn text-decoration-none"
+            >
+              {{ item.label }}
+            </router-link>
           </div>
         </div>
       </div>
@@ -31,7 +36,13 @@ export default defineComponent({
   name: 'MenuLayout',
   data() {
     return {
-      items: ['Artigos', 'Entrevistas', 'Casos Famosos', 'Quem Somos', 'Contato']
+      items: [
+        { label: 'Artigos', link: '/artigos' },
+        { label: 'Entrevistas', link: '/entrevistas' },
+        { label: 'Casos Famosos', link: '/casos-famosos' },
+        { label: 'Quem Sou', link: '/quem-sou' },
+        { label: 'Contato', link: '/contato' }
+      ]
     }
   }
 })
@@ -49,7 +60,7 @@ export default defineComponent({
 .text-gold {
   color: #d4af37;
   transition: all 0.3s ease;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .text-gold:hover {
@@ -69,4 +80,7 @@ export default defineComponent({
   background-color: #d4af37;
   color: black;
 }
+
+/* Ajuste de layout em telas pequenas */
+    
 </style>
