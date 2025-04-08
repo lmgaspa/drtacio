@@ -1,31 +1,41 @@
 <template>
-  <nav class="bg-black p-4">
-    <div class="container mx-auto flex items-center justify-between">
-      <div class="hidden lg:flex space-x-4">
-        <!-- Navegação principal removida -->
-      </div>
-      <button @click="toggleMenu" class="lg:hidden text-color2">
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"
-          ></path>
-        </svg>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <div class="container-fluid justify-content-center">
+      <!-- Botão Hamburguer customizado -->
+      <button
+        class="navbar-toggler d-lg-none border-0 custom-toggler"
+        type="button"
+        @click="toggleMenu"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon custom-icon"></span>
       </button>
     </div>
+
+    <!-- Menu Mobile/Tablet -->
     <div
-      v-if="isMenuOpen"
-      class="lg:hidden bg-color2 text-center mt-2 space-y-2"
+      :class="[
+        'collapse',
+        'navbar-collapse',
+        'justify-content-center',
+        'text-center',
+        'w-100',
+        'd-lg-none',
+        { show: isMenuOpen }
+      ]"
+      id="navbarMobile"
     >
-      <!-- Menu mobile removido -->
+      <ul class="navbar-nav w-100 py-3 custom-mobile-menu">
+        <li class="nav-item" v-for="link in navLinks" :key="link.name">
+          <router-link
+            class="nav-link py-2 custom-link"
+            :to="link.path"
+            @click="toggleMenu"
+          >
+            {{ link.name }}
+          </router-link>
+        </li>
+      </ul>
     </div>
   </nav>
 </template>
@@ -38,22 +48,62 @@ export default defineComponent({
   setup() {
     const isMenuOpen = ref(false);
 
-    function toggleMenu() {
+    const toggleMenu = () => {
       isMenuOpen.value = !isMenuOpen.value;
-    }
+    };
 
-    function closeMenu() {
-      isMenuOpen.value = false;
-    }
+    const navLinks = [
+      { name: "Home", path: "/" },
+      { name: "Artigos", path: "/artigos" },
+      { name: "Entrevistas", path: "/entrevistas" },
+      { name: "Quem Sou", path: "/quem-sou" },
+      { name: "Contato", path: "/contato" },
+    ];
 
     return {
       isMenuOpen,
       toggleMenu,
-      closeMenu,
+      navLinks,
     };
   },
 });
 </script>
 
 <style scoped>
+/* Cores */
+:root {
+  --gold: #d4af37;
+  --gold-hover: #b8860b;
+  --menu-bg: #ffc401;
+}
+
+/* Botão hamburguer com ícone dourado */
+.custom-toggler .custom-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Menu dropdown */
+.custom-mobile-menu {
+  margin-top: 4px;
+  background-color: black;
+}
+
+/* Links */
+.custom-link {
+  color: #b8860b !important;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.custom-link:hover {
+  color: #ffc401 !important;
+}
+
+/* Remove padding e oculta menu no desktop */
+@media (min-width: 992px) {
+  #navbarMobile {
+    padding: 0 !important;
+    display: none !important;
+  }
+}
 </style>
