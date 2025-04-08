@@ -1,16 +1,19 @@
 <template>
-  <MenuOnlyView />
-  <SideBarMenu />
+  <Navbar />
+  <router-view></router-view>
+  <Footer />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import MenuOnlyView from './components/MenuOnlyView.vue'
+import Navbar from '@/components/Navbar.vue'
+import Footer from '@/components/Footer.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    MenuOnlyView,
+    Navbar,
+    Footer
   }
 })
 </script>

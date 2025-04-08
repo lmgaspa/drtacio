@@ -1,7 +1,16 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "compilerOptions": {
+    // Use a newer module setting that supports import.meta
+    "module": "esnext",
+    // Or "es2022", "node16", etc.
+    
+    // For Vue 3 + Vite projects, it's also common to have:
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "strict": true,
+    "moduleResolution": "node",
+    // ...
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
