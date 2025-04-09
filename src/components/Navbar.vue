@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-    <div class="container-fluid justify-content-center">
+    <div class="container-fluid d-flex justify-content-end">
       <!-- Botão Hamburguer customizado -->
       <button
         class="navbar-toggler d-lg-none border-0 custom-toggler"
@@ -17,7 +17,7 @@
       :class="[
         'collapse',
         'navbar-collapse',
-        'justify-content-center',
+        'justify-content-end',
         'text-center',
         'w-100',
         'd-lg-none',
@@ -25,7 +25,7 @@
       ]"
       id="navbarMobile"
     >
-      <ul class="navbar-nav w-100 py-3 custom-mobile-menu">
+      <ul class="navbar-nav ms-auto me-3 py-3 custom-mobile-menu">
         <li class="nav-item" v-for="link in navLinks" :key="link.name">
           <router-link
             class="nav-link py-2 custom-link"
@@ -39,6 +39,7 @@
     </div>
   </nav>
 </template>
+
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
